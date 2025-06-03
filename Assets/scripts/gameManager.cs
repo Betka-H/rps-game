@@ -6,17 +6,26 @@ public class gameManager : MonoBehaviour
     public enum gameState { game, menu }
     [HideInInspector] public gameState gState;
 
-    public Slider roundsSlider;
-    public Slider rollsSlider;
-    public Slider oppSlider;
+    public Slider roundsSlider, rollsSlider, oppSlider;
 
     public menuNavigation menuNavigation;
 
-    public void playgame()
+    public void playgame(bool tutorial)
     {
-        float rounds = roundsSlider.value;
-        float rolls = rollsSlider.value;
-        float opp = oppSlider.value;
+        float rounds, rolls, opp;
+
+        if (tutorial)
+        {
+            rounds = 1;
+            rolls = 3;
+            opp = 0;
+        }
+        else
+        {
+            rounds = roundsSlider.value;
+            rolls = rollsSlider.value;
+            opp = oppSlider.value;
+        }
 
         Debug.Log($"starting game\ngame settings: rounds: {rounds}, rolls: {rolls}, opp: {opp} --------------------------------------------------------------");
         menuNavigation.closeWholeMenu();

@@ -4,46 +4,33 @@ using UnityEngine.UI;
 [System.Serializable]
 public class statSaveData
 {
-    public int[] stat_games;
-    public int[] stat_rolls;
-    public int[] stat_timesRPS;
+    public int[] stat_games, stat_rolls, stat_timesRPS;
 }
 [System.Serializable]
 public class playSettingsSaveData
 {
-    public float play_rounds;
-    public float play_rolls;
-    public float play_opp;
+    public float play_rounds, play_rolls, play_opp;
 }
 [System.Serializable]
 public class volumeSettingsSaveData
 {
-    public float vol_music;
-    public float vol_SFX;
+    public float vol_music, vol_SFX;
 }
 
 public class saveManager : MonoBehaviour
 {
-    string statsSaveKey = "statsSave";
-    string playSaveKey = "playSave";
-    string volSaveKey = "volSave";
+    string statsSaveKey = "statsSave", playSaveKey = "playSave", volSaveKey = "volSave";
 
     [Header("stats")]
     public statsManager statsManager;
 
     [Header("play sliders")]
-    public Slider roundSlider;
-    public Slider rollSlider;
-    public Slider oppSlider;
-    [Min(1)] public int defaultRounds;
-    [Min(1)] public int defaultRolls;
-    [Min(1)] public int defaultOpp;
+    public Slider roundSlider, rollSlider, oppSlider;
+    [Min(1)] public int defaultRounds, defaultRolls, defaultOpp;
 
     [Header("volume sliders")]
-    public Slider musicSlider;
-    public Slider SFXSlider;
-    [Min(0)] public float defaultMusicVol;
-    [Min(0)] public float defaultSFXVol;
+    public Slider musicSlider, SFXSlider;
+    [Min(0)] public float defaultMusicVol, defaultSFXVol;
 
     void Start()
     {

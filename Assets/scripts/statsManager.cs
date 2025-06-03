@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class statsManager : MonoBehaviour
 {
-    [HideInInspector] public int[] games; // started, won, lost, drew
-    [HideInInspector] public int[] rolls; // started, won, lost, drew
-    [HideInInspector] public int[] timesRPS; // times rock, times paper, times scissors
+    [HideInInspector] public int[] games, rolls, timesRPS;
+    // games started, won, lost, drew (4)
+    // rolls started, won, lost, drew (4)
+    // times rock, paper, scissors (3)
 
     [Header("text displays")]
-    public TMP_Text[] gamesTxt;
-    public TMP_Text[] rollsTxt;
-    public TMP_Text[] timesRPSTxt;
+    public TMP_Text[] gamesTxt, rollsTxt, timesRPSTxt;
 
     [Space]
     public saveManager saveManager;

@@ -8,9 +8,7 @@ public class button : MonoBehaviour
     public TextMeshProUGUI textMeshProUGUI;
 
     [Header("colors")]
-    public Color normalColor;
-    public Color hoverColor;
-    public Color activateColor;
+    public Color normalColor, hoverColor, activateColor;
 
     Vector3 originalScale;
 

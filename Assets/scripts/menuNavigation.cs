@@ -7,15 +7,10 @@ public class menuNavigation : MonoBehaviour
 
     [Header("title")]
     public TMP_Text titleObject;
-    public string gameTitle;
-    public string settingsTitle;
-    public string playTitle;
+    public string gameTitle, settingsTitle, playTitle;
 
     [Header("menu objects")]
-    public GameObject wholeMenu;
-    public GameObject mainMenu;
-    public GameObject settingsMenu;
-    public GameObject playMenu;
+    public GameObject wholeMenu, mainMenu, settingsMenu, playMenu;
 
     [Space]
     public gameManager gameManager;
