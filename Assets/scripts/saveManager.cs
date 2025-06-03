@@ -148,15 +148,19 @@ public class saveManager : MonoBehaviour
         Debug.Log($"loaded volume settings:\nmusic: {musicSlider.value}, sfx: {SFXSlider.value}");
     }
 
-    public void clearStats() => clearPref("stats", statsSaveKey);
-    public void clearPlaySettings() => clearPref("game settings", playSaveKey);
-    public void clearVolumeSettings() => clearPref("volume settings", volSaveKey);
+    public void resetStats() => clearPref("stats", statsSaveKey);
+    public void resetPlaySettings() => clearPref("game settings", playSaveKey);
+    public void resetVolumeSettings() => clearPref("volume settings", volSaveKey);
 
     void clearPref(string what, string key)
     {
         Debug.Log($"clearing {what}");
         PlayerPrefs.DeleteKey(key);
         PlayerPrefs.Save();
+
+        if (key == statsSaveKey) loadStats();
+        else if (key == playSaveKey) loadPlaySettings();
+        else if (key == volSaveKey) loadVolumeSettings();
     }
 
     void OnApplicationQuit()

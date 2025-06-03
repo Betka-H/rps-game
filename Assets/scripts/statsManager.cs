@@ -20,7 +20,6 @@ public class statsManager : MonoBehaviour
         games = new int[gamesTxt.Length];
         rolls = new int[rollsTxt.Length];
         timesRPS = new int[timesRPSTxt.Length];
-
         saveManager.loadStats();
     }
 
@@ -40,14 +39,5 @@ public class statsManager : MonoBehaviour
             for (int i = 0; i < txts.Length; i++)
                 txts[i].text = ints[i].ToString();
         }
-    }
-
-    public void resetStats()
-    {
-        Debug.Log($"resetting stats");
-        games = new int[gamesTxt.Length];
-        rolls = new int[rollsTxt.Length];
-        timesRPS = new int[timesRPSTxt.Length];
-        saveManager.saveStats();
     }
 }

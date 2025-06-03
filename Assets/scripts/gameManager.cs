@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
         float rolls = rollsSlider.value;
         float opp = oppSlider.value;
 
-        Debug.Log($"starting game\n--------------------------------------------------------------");
+        Debug.Log($"starting game\ngame settings: rounds: {rounds}, rolls: {rolls}, opp: {opp} --------------------------------------------------------------");
         menuNavigation.closeWholeMenu();
 
         playIntro(opp);
