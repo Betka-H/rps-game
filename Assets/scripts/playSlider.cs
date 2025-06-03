@@ -8,7 +8,8 @@ public class playSlider : MonoBehaviour
 
     void Start()
     {
-        UpdateSliderValue(GetComponent<Slider>().value);
+        float value = GetComponent<Slider>().value;
+        UpdateSliderValue(value);
     }
 
     public void UpdateSliderValue(float value)

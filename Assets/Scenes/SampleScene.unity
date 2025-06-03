@@ -1780,7 +1780,19 @@ MonoBehaviour:
         m_CallState: 2
   altClickEvents:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 503187230}
+        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
+        m_MethodName: playgame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &368616636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2168,6 +2180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gState: 0
+  roundsSlider: {fileID: 2038730929}
+  rollsSlider: {fileID: 1150119591}
+  oppSlider: {fileID: 132813071}
 --- !u!4 &503187231
 Transform:
   m_ObjectHideFlags: 0
@@ -2337,7 +2352,19 @@ MonoBehaviour:
   activateColor: {r: 0.49056602, g: 0.32924885, b: 0.025453899, a: 1}
   onClickEvents:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 503187230}
+        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
+        m_MethodName: playgame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   altClickEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -3466,8 +3493,6 @@ GameObject:
   - component: {fileID: 789953039}
   - component: {fileID: 789953043}
   - component: {fileID: 789953042}
-  - component: {fileID: 789953041}
-  - component: {fileID: 789953040}
   m_Layer: 5
   m_Name: opponent title
   m_TagString: Untagged
@@ -3494,61 +3519,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!65 &789953040
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789953038}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 230.68025, y: 57.026623, z: 24.419085}
-  m_Center: {x: -0.6039587, y: -2.660568, z: -3.797884}
---- !u!114 &789953041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789953038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9068561b04a3fc4fb5f589ef11592bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshProUGUI: {fileID: 789953042}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 0.16794232, g: 0.1944507, b: 0.6981132, a: 1}
-  activateColor: {r: 0.028034883, g: 0.04712626, b: 0.3962264, a: 1}
-  onClickEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1901027983}
-        m_TargetAssemblyTypeName: statsManager, Assembly-CSharp
-        m_MethodName: resetStats
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  altClickEvents:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &789953042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8816,7 +8786,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1855216977}
   - component: {fileID: 1855216978}
-  - component: {fileID: 1855216979}
   m_Layer: 5
   m_Name: play settings menu
   m_TagString: Untagged
@@ -8877,18 +8846,6 @@ MonoBehaviour:
   m_Spacing: {x: -250, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
---- !u!114 &1855216979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855216976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b6d93cda5b23245910ac46eb8aeecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1872985253
 GameObject:
   m_ObjectHideFlags: 0
