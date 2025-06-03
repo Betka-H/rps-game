@@ -20,7 +20,8 @@ public class statsManager : MonoBehaviour
         games = new int[gamesTxt.Length];
         rolls = new int[rollsTxt.Length];
         timesRPS = new int[timesRPSTxt.Length];
-        saveManager.loadSave();
+
+        saveManager.loadStats();
     }
 
     void OnEnable()
@@ -47,6 +48,6 @@ public class statsManager : MonoBehaviour
         games = new int[gamesTxt.Length];
         rolls = new int[rollsTxt.Length];
         timesRPS = new int[timesRPSTxt.Length];
-        saveManager.save();
+        saveManager.saveStats();
     }
 }

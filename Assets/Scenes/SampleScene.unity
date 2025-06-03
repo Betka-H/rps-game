@@ -634,6 +634,7 @@ MonoBehaviour:
   gameTitle: Rock, paper, scissors
   settingsTitle: Settings
   playTitle: Game settings
+  wholeMenu: {fileID: 1697894291}
   mainMenu: {fileID: 598568189}
   settingsMenu: {fileID: 522752511}
   playMenu: {fileID: 710229407}
@@ -2183,6 +2184,7 @@ MonoBehaviour:
   roundsSlider: {fileID: 2038730929}
   rollsSlider: {fileID: 1150119591}
   oppSlider: {fileID: 132813071}
+  menuNavigation: {fileID: 87158159}
 --- !u!4 &503187231
 Transform:
   m_ObjectHideFlags: 0
@@ -7530,7 +7532,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d919b7d0ed9738f47a74fc448e525cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sm: {fileID: 1901027983}
+  statsManager: {fileID: 1901027983}
+  roundSlider: {fileID: 2038730929}
+  rollSlider: {fileID: 1150119591}
+  oppSlider: {fileID: 132813071}
+  defaultRounds: 1
+  defaultRolls: 3
+  defaultOpp: 1
+  musicSlider: {fileID: 1491958088}
+  SFXSlider: {fileID: 1294033872}
+  defaultMusicVol: 0.75
+  defaultSFXVol: 1
 --- !u!4 &1604296397
 Transform:
   m_ObjectHideFlags: 0
@@ -7972,7 +7984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1697894292}
   m_Layer: 5
-  m_Name: menu
+  m_Name: whole menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class menuNavigation : MonoBehaviour
 {
-    public enum menus { main, settings, play }
+    public enum menus { main, settings, play, hide }
 
     [Header("title")]
     public TMP_Text titleObject;
@@ -12,6 +12,7 @@ public class menuNavigation : MonoBehaviour
     public string playTitle;
 
     [Header("menu objects")]
+    public GameObject wholeMenu;
     public GameObject mainMenu;
     public GameObject settingsMenu;
     public GameObject playMenu;
@@ -21,16 +22,18 @@ public class menuNavigation : MonoBehaviour
 
     void Start()
     {
-        openMenu(menus.main);
+        toggleMenu(menus.main);
         gameManager.gState = gameManager.gameState.menu;
     }
 
-    public void openMainMenu() => openMenu(menus.main);
-    public void openSettingsMenu() => openMenu(menus.settings);
-    public void openPlayMenu() => openMenu(menus.play);
+    public void openMainMenu() => toggleMenu(menus.main);
+    public void openSettingsMenu() => toggleMenu(menus.settings);
+    public void openPlayMenu() => toggleMenu(menus.play);
+    public void closeWholeMenu() => toggleMenu(menus.hide);
 
-    void openMenu(menus menu)
+    void toggleMenu(menus menu)
     {
+        wholeMenu.SetActive(true);
         mainMenu.gameObject.SetActive(false);
         settingsMenu.gameObject.SetActive(false);
         playMenu.gameObject.SetActive(false);
@@ -48,6 +51,9 @@ public class menuNavigation : MonoBehaviour
             case menus.play:
                 titleObject.text = playTitle;
                 playMenu.SetActive(true);
+                break;
+            case menus.hide:
+                wholeMenu.SetActive(false);
                 break;
             default:
                 Debug.LogError("invalid input");

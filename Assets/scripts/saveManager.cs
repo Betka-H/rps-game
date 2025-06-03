@@ -1,51 +1,168 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
-public class saveData
+public class statSaveData
 {
-    public int[] games;
-    public int[] rolls;
-    public int[] timesRPS;
+    public int[] stat_games;
+    public int[] stat_rolls;
+    public int[] stat_timesRPS;
+}
+[System.Serializable]
+public class playSettingsSaveData
+{
+    public float play_rounds;
+    public float play_rolls;
+    public float play_opp;
+}
+[System.Serializable]
+public class volumeSettingsSaveData
+{
+    public float vol_music;
+    public float vol_SFX;
 }
 
 public class saveManager : MonoBehaviour
 {
-    string saveKey = "statsSave";
-    public statsManager sm;
+    string statsSaveKey = "statsSave";
+    string playSaveKey = "playSave";
+    string volSaveKey = "volSave";
 
-    public void save()
+    [Header("stats")]
+    public statsManager statsManager;
+
+    [Header("play sliders")]
+    public Slider roundSlider;
+    public Slider rollSlider;
+    public Slider oppSlider;
+    [Min(1)] public int defaultRounds;
+    [Min(1)] public int defaultRolls;
+    [Min(1)] public int defaultOpp;
+
+    [Header("volume sliders")]
+    public Slider musicSlider;
+    public Slider SFXSlider;
+    [Min(0)] public float defaultMusicVol;
+    [Min(0)] public float defaultSFXVol;
+
+    void Start()
     {
-        saveData data = new saveData();
-
-        data.games = sm.games;
-        data.rolls = sm.rolls;
-        data.timesRPS = sm.timesRPS;
-
-        PlayerPrefs.SetString(saveKey, JsonUtility.ToJson(data));
-        PlayerPrefs.Save();
-
-        Debug.Log($"saved save:\ngames: {string.Join(", ", data.games)}, rolls: {string.Join(", ", data.rolls)}, timesRPS: {string.Join(", ", data.timesRPS)}");
+        // do not load stats here (loaded at awake in statsmanager)
+        loadPlaySettings();
+        loadVolumeSettings();
     }
 
-    public void loadSave()
+    public void saveStats()
     {
-        if (PlayerPrefs.HasKey(saveKey))
+        save(statsSaveKey,
+        JsonUtility.ToJson(new statSaveData
         {
-            saveData data = JsonUtility.FromJson<saveData>(PlayerPrefs.GetString(saveKey));
+            stat_games = statsManager.games,
+            stat_rolls = statsManager.rolls,
+            stat_timesRPS = statsManager.timesRPS
+        }));
 
-            sm.games = data.games;
-            sm.rolls = data.rolls;
-            sm.timesRPS = data.timesRPS;
-        }
-        else Debug.LogWarning("no game save present!");
+        Debug.Log($"saved stats:\ngames: {string.Join(", ", statsManager.games)}, rolls: {string.Join(", ", statsManager.rolls)}, timesRPS: {string.Join(", ", statsManager.timesRPS)}");
+    }
+    public void savePlaySettings()
+    {
+        save(playSaveKey,
+        JsonUtility.ToJson(new playSettingsSaveData
+        {
+            play_rounds = roundSlider.value,
+            play_rolls = rollSlider.value,
+            play_opp = oppSlider.value
+        }));
 
-        Debug.Log($"loaded save:\ngames: {string.Join(", ", sm.games)}, rolls: {string.Join(", ", sm.rolls)}, timesRPS: {string.Join(", ", sm.timesRPS)}");
+        Debug.Log($"saved play settings:\nrounds: {roundSlider.value}, rolls: {rollSlider.value}, opp: {oppSlider.value}");
+    }
+    public void saveVolumeSettings()
+    {
+        save(volSaveKey,
+        JsonUtility.ToJson(new volumeSettingsSaveData
+        {
+            vol_music = musicSlider.value,
+            vol_SFX = SFXSlider.value,
+        }));
+
+        Debug.Log($"saved volume settings:\nmusic: {musicSlider.value}, sfx: {SFXSlider.value}");
+    }
+    void save(string key, string data)
+    {
+        PlayerPrefs.SetString(key, data);
+        PlayerPrefs.Save();
     }
 
-    public void clearPrefs()
+    public void loadStats()
     {
-        Debug.Log($"clearing save");
-        PlayerPrefs.DeleteKey(saveKey);
+        if (PlayerPrefs.HasKey(statsSaveKey))
+        {
+            statSaveData data = JsonUtility.FromJson<statSaveData>(PlayerPrefs.GetString(statsSaveKey));
+
+            statsManager.games = data.stat_games;
+            statsManager.rolls = data.stat_rolls;
+            statsManager.timesRPS = data.stat_timesRPS;
+        }
+        else Debug.LogWarning("no stat save present!");
+
+        Debug.Log($"loaded stats:\ngames: {string.Join(", ", statsManager.games)}, rolls: {string.Join(", ", statsManager.rolls)}, timesRPS: {string.Join(", ", statsManager.timesRPS)}");
+    }
+    public void loadPlaySettings()
+    {
+        if (PlayerPrefs.HasKey(playSaveKey))
+        {
+            playSettingsSaveData data = JsonUtility.FromJson<playSettingsSaveData>(PlayerPrefs.GetString(playSaveKey));
+
+            roundSlider.value = data.play_rounds;
+            rollSlider.value = data.play_rolls;
+            oppSlider.value = data.play_opp;
+        }
+        else
+        {
+            Debug.LogWarning("no game settings save present! setting default values");
+
+            roundSlider.value = defaultRounds;
+            rollSlider.value = defaultRolls;
+            oppSlider.value = defaultOpp;
+        }
+
+        Debug.Log($"loaded play settings:\nrounds: {roundSlider.value}, rolls: {rollSlider.value}, opp: {oppSlider.value}");
+    }
+    public void loadVolumeSettings()
+    {
+        if (PlayerPrefs.HasKey(volSaveKey))
+        {
+            volumeSettingsSaveData data = JsonUtility.FromJson<volumeSettingsSaveData>(PlayerPrefs.GetString(volSaveKey));
+
+            musicSlider.value = data.vol_music;
+            SFXSlider.value = data.vol_SFX;
+        }
+        else
+        {
+            Debug.LogWarning("no volume settings save present! setting default values");
+
+            musicSlider.value = defaultMusicVol;
+            SFXSlider.value = defaultSFXVol;
+        }
+
+        Debug.Log($"loaded volume settings:\nmusic: {musicSlider.value}, sfx: {SFXSlider.value}");
+    }
+
+    public void clearStats() => clearPref("stats", statsSaveKey);
+    public void clearPlaySettings() => clearPref("game settings", playSaveKey);
+    public void clearVolumeSettings() => clearPref("volume settings", volSaveKey);
+
+    void clearPref(string what, string key)
+    {
+        Debug.Log($"clearing {what}");
+        PlayerPrefs.DeleteKey(key);
         PlayerPrefs.Save();
+    }
+
+    void OnApplicationQuit()
+    {
+        saveStats();
+        savePlaySettings();
+        saveVolumeSettings();
     }
 }

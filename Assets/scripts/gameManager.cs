@@ -10,6 +10,8 @@ public class gameManager : MonoBehaviour
     public Slider rollsSlider;
     public Slider oppSlider;
 
+    public menuNavigation menuNavigation;
+
     public void playgame()
     {
         float rounds = roundsSlider.value;
@@ -17,6 +19,7 @@ public class gameManager : MonoBehaviour
         float opp = oppSlider.value;
 
         Debug.Log($"starting game\n--------------------------------------------------------------");
+        menuNavigation.closeWholeMenu();
 
         playIntro(opp);
 
@@ -40,6 +43,7 @@ public class gameManager : MonoBehaviour
         void endGame()
         {
             Debug.Log($"ending game\n--------------------------------------------------------------");
+            menuNavigation.openMainMenu();
         }
     }
 }
