@@ -1194,34 +1194,10 @@ MonoBehaviour:
   activateColor: {r: 0.028034883, g: 0.04712626, b: 0.3962264, a: 1}
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 87158159}
-        m_TargetAssemblyTypeName: menuNavigation, Assembly-CSharp
-        m_MethodName: openSettingsMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   altClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 503187230}
-        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
-        m_MethodName: quitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!65 &368616636
 BoxCollider:
   m_ObjectHideFlags: 0
